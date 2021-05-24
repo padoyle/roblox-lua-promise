@@ -434,7 +434,15 @@ function Promise._all(traceback, promises, amount)
 	end)
 end
 
-function Promise.all(promises)
+function Promise.all(...)
+	local promises = {...}
+
+	-- check if we've been given a list of promises, not just a variable number of promises
+	if type(promises[1]) == "table" and not Promise.is(promises[1]) then
+		-- we've been given a table of promises already
+		promises = promises[1]
+	end
+
 	return Promise._all(debug.traceback(nil, 2), promises)
 end
 

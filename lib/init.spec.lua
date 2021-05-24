@@ -774,14 +774,15 @@ return function()
 			expect(second).to.equal("bar")
 		end)
 
-		it("should error if a non-array table is passed in", function()
-			local ok, err = pcall(function()
-				Promise.all(Promise.new(function() end))
-			end)
+		-- Temporarily turns this test off to allow non array parameter for compatibility reason.
+-- 		it("should error if a non-array table is passed in", function()
+-- 			local ok, err = pcall(function()
+-- 				Promise.all(Promise.new(function() end))
+-- 			end)
 
-			expect(ok).to.be.ok()
-			expect(err:find("Non%-promise")).to.be.ok()
-		end)
+-- 			expect(ok).to.be.ok()
+-- 			expect(err:find("Non%-promise")).to.be.ok()
+-- 		end)
 
 		it("should cancel pending promises if one rejects", function()
 			local p = Promise.new(function() end)
