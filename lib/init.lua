@@ -891,11 +891,11 @@ end
 
 function Promise.prototype:andThen(successHandler, failureHandler)
 	assert(
-		successHandler == nil or type(successHandler) == "function",
+		successHandler == nil or type(successHandler) == "function" or successHandler.__call ~= nil,,
 		string.format(ERROR_NON_FUNCTION, "Promise:andThen")
 	)
 	assert(
-		failureHandler == nil or type(failureHandler) == "function",
+		failureHandler == nil or type(failureHandler) == "function" or failureCallback.__call ~= nil,
 		string.format(ERROR_NON_FUNCTION, "Promise:andThen")
 	)
 
@@ -907,7 +907,7 @@ end
 ]]
 function Promise.prototype:catch(failureCallback)
 	assert(
-		failureCallback == nil or type(failureCallback) == "function",
+		failureCallback == nil or type(failureCallback) == "function" or failureCallback.__call ~= nil,
 		string.format(ERROR_NON_FUNCTION, "Promise:catch")
 	)
 	return self:_andThen(debug.traceback(nil, 2), nil, failureCallback)
@@ -1040,7 +1040,7 @@ end
 
 function Promise.prototype:finally(finallyHandler)
 	assert(
-		finallyHandler == nil or type(finallyHandler) == "function",
+		finallyHandler == nil or type(finallyHandler) == "function" or finallyHandler.__call ~= nill,
 		string.format(ERROR_NON_FUNCTION, "Promise:finally")
 	)
 	return self:_finally(debug.traceback(nil, 2), finallyHandler)
@@ -1072,7 +1072,7 @@ end
 ]]
 function Promise.prototype:done(finallyHandler)
 	assert(
-		finallyHandler == nil or type(finallyHandler) == "function",
+		finallyHandler == nil or type(finallyHandler) == "function" or finallyHandler.__call ~= nill,
 		string.format(ERROR_NON_FUNCTION, "Promise:done")
 	)
 	return self:_finally(debug.traceback(nil, 2), finallyHandler, true)
