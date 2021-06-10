@@ -891,11 +891,11 @@ end
 
 function Promise.prototype:andThen(successHandler, failureHandler)
 	assert(
-		successHandler == nil or type(successHandler) == "function" or successHandler.__call ~= nil,,
+		successHandler == nil or type(successHandler) == "function" or successHandler.__call ~= nil,
 		string.format(ERROR_NON_FUNCTION, "Promise:andThen")
 	)
 	assert(
-		failureHandler == nil or type(failureHandler) == "function" or failureCallback.__call ~= nil,
+		failureHandler == nil or type(failureHandler) == "function" or failureHandler.__call ~= nil,
 		string.format(ERROR_NON_FUNCTION, "Promise:andThen")
 	)
 
