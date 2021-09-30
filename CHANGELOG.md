@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.2.0] - 2021-9-30
+
+### Changed
+- Allow `Promise.all` to optionally accept multiple promises as varargs instead of an array (e4ba51e)
+- Allow promise handlers and callbacks to be callable tables (f4efe38)
+
 ## [3.1.0] - 2020-12-01
 
 ### Added
